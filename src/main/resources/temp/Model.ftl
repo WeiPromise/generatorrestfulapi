@@ -7,11 +7,9 @@ import java.io.Serializable;
 /**
 * Created by leiwei on ${now?date}.
 */
-@TableMeta("${models}")
 public class ${model} implements Serializable{
     <#list fields as f>
 
-        @FieldMeta(fieldName = "${f.comment}",  columnName = "${f.field_}")
         private ${f.type} ${f.field};
     </#list>
 
@@ -25,7 +23,6 @@ public class ${model} implements Serializable{
             this.${f.field} = ${f.field};
             return this;
         }-->
-
         public void set${f.field?cap_first}(${f.type} ${f.field}) {
             this.${f.field} = ${f.field};
         }
