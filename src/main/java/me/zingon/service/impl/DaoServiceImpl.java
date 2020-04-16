@@ -24,7 +24,7 @@ public class DaoServiceImpl implements DaoService {
         List<String> tables = Maps.getTables();
         for (String table : tables) {
             Map<String, Object> root = new HashMap<String, Object>();
-            root.put("model", MyUtil.a_b2AB(table));
+            root.put("model", MyUtil.a_b2AB(table)+"PO");
             cs.write2File(root, "Dao.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "Dao.java"));
         }
     }
@@ -33,7 +33,7 @@ public class DaoServiceImpl implements DaoService {
     public void createDao(String table) throws IOException, TemplateException {
         String path= MyUtil.mkDir("dao");
         Map<String, Object> root = new HashMap<String, Object>();
-        root.put("model", MyUtil.a_b2AB(table));
+        root.put("model", MyUtil.a_b2AB(table)+"PO");
         cs.write2File(root, "Dao.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "Dao.java"));
     }
 
@@ -43,7 +43,7 @@ public class DaoServiceImpl implements DaoService {
         List<String> tables = Maps.getTables();
         for (String table : tables) {
             Map<String, Object> root = new HashMap<String, Object>();
-            root.put("model", MyUtil.a_b2AB(table));
+            root.put("model", MyUtil.a_b2AB(table)+"PO");
             root.put("table",table);
             root.put("fields", Maps.getFields(table));
             cs.write2File(root, "Mapper.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "Mapper.xml"));
@@ -54,7 +54,7 @@ public class DaoServiceImpl implements DaoService {
     public void createMapper(String table) throws IOException, TemplateException {
         String path= MyUtil.mkDir("mapper");
         Map<String, Object> root = new HashMap<String, Object>();
-        root.put("model", MyUtil.a_b2AB(table));
+        root.put("model", MyUtil.a_b2AB(table)+"PO");
         root.put("table",table);
         root.put("fields", Maps.getFields(table));
         cs.write2File(root, "Mapper.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "Mapper.xml"));
