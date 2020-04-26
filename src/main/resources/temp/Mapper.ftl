@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="${package}.dao.${model}Dao">
-    <resultMap id="${model?uncap_first}" type="${package}.model.${model}">
+<mapper namespace="${package}.dao.${models}Dao">
+    <resultMap id="${models?uncap_first}" type="${package}.model.${model}">
     <#list fields as f>
         <#if f.key=='PRI'>
             <id property="${f.field}" column="${f.field_}"/>

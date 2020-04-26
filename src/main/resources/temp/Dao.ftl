@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 */
 @Mapper
 @Repository
-public interface ${model}Dao {
+public interface ${models}Dao {
 
     int insert(${model} ${model?uncap_first});
 
