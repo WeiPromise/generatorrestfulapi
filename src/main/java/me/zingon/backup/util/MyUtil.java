@@ -9,21 +9,33 @@ import java.io.File;
  */
 public class MyUtil {
     public static String a_b2aB(String str){
-        if(str.contains("_")){
+
+        StringBuilder sb=new StringBuilder();
+        String[] temp = str.split("_");
+        for (int i = 0; i < temp.length; i++) {
+            if(i==0){
+                sb.append(temp[i].toLowerCase());
+            }else {
+                sb.append(temp[i].substring(0, 1).toUpperCase() + temp[i].substring(1).toLowerCase());
+            }
+        }
+        return sb.toString();
+
+       /* if(str.contains("_")){
             String[] temp=str.split("_");
             for(int i=1;i<temp.length;i++){
-                temp[0]+=temp[i].substring(0,1).toUpperCase()+temp[i].substring(1);
+                temp[0]+=temp[i].substring(0,1).toUpperCase()+temp[i].substring(1).toLowerCase();
             }
             return temp[0];
         }
-        return str;
+        return str;*/
     }
 
     public static String a_b2AB(String str) {
         StringBuilder sb=new StringBuilder();
         String[] temp = str.split("_");
         for (int i = 0; i < temp.length; i++) {
-            sb.append(temp[i].substring(0, 1).toUpperCase() + temp[i].substring(1));
+            sb.append(temp[i].substring(0, 1).toUpperCase() + temp[i].substring(1).toLowerCase());
         }
         return sb.toString();
     }

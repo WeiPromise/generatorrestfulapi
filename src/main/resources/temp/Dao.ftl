@@ -1,6 +1,6 @@
 package ${package}.dao;
 
-import ${package}.model.${model};
+import ${package}.entity.${model};
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 /**
 * Created by leiwei on ${now?date}.
 */
-@Mapper
 @Repository
 public interface ${models}Dao {
 

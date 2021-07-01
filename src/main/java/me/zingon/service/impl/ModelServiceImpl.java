@@ -25,10 +25,10 @@ public class ModelServiceImpl implements ModelService {
         List<String> tables = Maps.getTables();
         for (String table : tables) {
             Map<String, Object> root = new HashMap<String, Object>();
-            root.put("model", MyUtil.a_b2AB(table)+"PO");
+            root.put("model", MyUtil.a_b2AB(table));
             root.put("models",table);
             root.put("fields", Maps.getFields(table));
-            cs.write2File(root, "Model.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "PO.java"));
+            cs.write2File(root, "Model.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + ".java"));
         }
         return 0;
     }
@@ -37,9 +37,9 @@ public class ModelServiceImpl implements ModelService {
     public int createModel(String table) throws IOException, TemplateException {
         String path = MyUtil.mkDir("model");
         Map<String, Object> root = new HashMap<String, Object>();
-        root.put("model", MyUtil.a_b2AB(table)+"PO");
+        root.put("model", MyUtil.a_b2AB(table));
         root.put("fields", Maps.getFields(table));
-        cs.write2File(root, "Model.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "PO.java"));
+        cs.write2File(root, "Model.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + ".java"));
         return 0;
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="${package}.dao.${models}Dao">
-    <resultMap id="${models?uncap_first}" type="${package}.model.${model}">
+    <resultMap id="${model?uncap_first}" type="${package}.entity.${model}">
     <#list fields as f>
         <#if f.key=='PRI'>
             <id property="${f.field}" column="${f.field_}"/>
@@ -55,7 +55,7 @@
 
     <delete id="deleteByIds">
         delete from `${table}`
-        where `id` in
+        where <#list fields as f><#if f.key=='PRI'>`${f.field_}`<#break></#if></#list > in
         <foreach collection="ids" open="(" item="id" separator="," close=")">
         ${r'#{'}id${r'}'}
         </foreach>
@@ -72,14 +72,14 @@
             </#if>
         </#list>
         </set>
-        where id = ${r'#{id}'}
+        where <#list fields as f><#if f.key=='PRI'>`${f.field_}`<#break></#if></#list > = ${r'#{id}'}
     </update>
 
     <select id="getById" resultMap="${model?uncap_first}">
         select
         <include refid="columns" />
         from `${table}`
-        where `id` = ${r'#{id}'}
+        where <#list fields as f><#if f.key=='PRI'>`${f.field_}`<#break></#if></#list > = ${r'#{id}'}
     </select>
 
     <select id="list" resultMap="${model?uncap_first}">
