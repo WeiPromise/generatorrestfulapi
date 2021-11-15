@@ -1,17 +1,17 @@
 package ${package}.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ${package}.entity.${model};
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
-import org.apache.ibatis.annotations.Param;
 
 /**
 * Created by leiwei on ${now?date}.
 */
-@Repository
-public interface ${models}Dao {
+@Mapper
+public interface ${models}Mapper extends BaseMapper<${models}> {
 
-    int insert(${model} ${model?uncap_first});
+    <#--int insert(${model} ${model?uncap_first});
 
     int delete(${model} ${model?uncap_first});
 
@@ -21,5 +21,5 @@ public interface ${models}Dao {
 
     ${model} getById(@Param("id") Integer id);
 
-    List<${model}> list(${model} ${model?uncap_first});
+    List<${model}> list(${model} ${model?uncap_first});-->
 }

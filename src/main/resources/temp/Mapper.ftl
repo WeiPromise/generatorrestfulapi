@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="${package}.dao.${models}Dao">
-    <resultMap id="${model?uncap_first}" type="${package}.entity.${model}">
+<mapper namespace="${package}.dao.${models}Mapper">
+  <#--  <resultMap id="${model?uncap_first}" type="${package}.entity.${model}">
     <#list fields as f>
         <#if f.key=='PRI'>
             <id property="${f.field}" column="${f.field_}"/>
@@ -10,7 +10,7 @@
             <result property="${f.field}" column="${f.field_}"/>
         </#if>
     </#list>
-    </resultMap>
+    </resultMap>-->
 
     <sql id="columns">
     <#list fields as f>
@@ -24,7 +24,7 @@
     </#list>
     </sql>
 
-    <insert id="insert">
+    <#--<insert id="insert">
         insert into `${table}`
         <trim prefix="(" suffix=")" suffixOverrides=",">
         <#list fields as f>
@@ -93,5 +93,5 @@
             </if>
         </#list>
         </trim>
-    </select>
+    </select>-->
 </mapper>

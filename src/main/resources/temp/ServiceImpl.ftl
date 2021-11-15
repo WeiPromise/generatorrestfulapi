@@ -16,7 +16,7 @@ import java.util.List;
 public class ${model}ServiceImpl implements ${model}Service {
 
     @Autowired
-    ${model}Dao ${model?uncap_first}Dao;
+    ${model}Dao ${model?uncap_first}Mapper;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)

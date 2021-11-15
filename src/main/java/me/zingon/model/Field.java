@@ -34,10 +34,12 @@ public class Field {
     }
 
     public String getType() {
+        if(type.contains("bigint"))
+            return "Long";
+        if(type.contains("bit")||(type.contains("tinyint")))
+            return "Boolean";
         if(type.contains("int"))
             return "Integer";
-        if(type.contains("bit"))
-            return "Boolean";
         if(type.contains("enum"))
             return "String";
         if(type.contains("char"))
@@ -45,7 +47,7 @@ public class Field {
         if(type.contains("text"))
             return "String";
         if(type.contains("date")||type.contains("time"))
-            return "String";
+            return "Date";
         if(type.contains("float")||type.contains("double")||type.contains("decimal"))
             return "BigDecimal";
         return type;

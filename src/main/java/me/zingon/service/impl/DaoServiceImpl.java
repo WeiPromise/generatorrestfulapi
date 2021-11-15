@@ -26,7 +26,7 @@ public class DaoServiceImpl implements DaoService {
             Map<String, Object> root = new HashMap<String, Object>();
             root.put("model", MyUtil.a_b2AB(table));
             root.put("models", MyUtil.a_b2AB(table));
-            cs.write2File(root, "Dao.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "Dao.java"));
+            cs.write2File(root, "Dao.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "Mapper.java"));
         }
     }
 
@@ -35,7 +35,7 @@ public class DaoServiceImpl implements DaoService {
         String path= MyUtil.mkDir("dao");
         Map<String, Object> root = new HashMap<String, Object>();
         root.put("model", MyUtil.a_b2AB(table));
-        cs.write2File(root, "Dao.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "Dao.java"));
+        cs.write2File(root, "Dao.ftl", new File(path + File.separator + MyUtil.a_b2AB(table) + "Mapper.java"));
     }
 
     @Override
