@@ -41,7 +41,7 @@ public class MyUtil {
     }
 
     public static String getPath(){
-        return Config.get("path")+Config.get("package").replace(".", File.separator);
+        return Config.get("path")+File.separator+Config.get("package").replace(".", File.separator);
     }
 
     public static String mkDir(String name){

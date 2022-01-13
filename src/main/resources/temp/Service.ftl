@@ -1,22 +1,12 @@
 package ${package}.service;
 
 import ${package}.model.${model};
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
 * Created by leiwei on ${now?date}.
 */
-public interface ${model}Service {
+public interface ${model}Service extends IService<${model}> {
 
-    int insert(${model} ${model?uncap_first});
 
-    int delete(${model} ${model?uncap_first});
-
-    int deleteByIds(Integer[] ids);
-
-    int update(${model} ${model?uncap_first});
-
-    ${model} getById(Integer id);
-
-    List<${model}> list(${model} ${model?uncap_first});
 }
