@@ -20,7 +20,7 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public int createModels() throws IOException, TemplateException {
-        String path = MyUtil.mkDir("model");
+        String path = MyUtil.mkDir("entity");
 
         List<String> tables = Maps.getTables();
         for (String table : tables) {
@@ -35,7 +35,7 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public int createModel(String table) throws IOException, TemplateException {
-        String path = MyUtil.mkDir("model");
+        String path = MyUtil.mkDir("entity");
         Map<String, Object> root = new HashMap<String, Object>();
         root.put("model", MyUtil.a_b2AB(table));
         root.put("fields", Maps.getFields(table));

@@ -15,9 +15,13 @@ public class DBcon {
     public static Connection getCon(){
         Connection dbConnection = null;
         try {
-            Class.forName(Config.get("db.driver"));
-            dbConnection= DriverManager
-                    .getConnection(Config.get("db.url"), Config.get("db.username"),Config.get("db.password"));
+            String driver = Config.get("db.driver");
+            String url = Config.get("db.url");
+            String user = Config.get("db.username");
+            String password = Config.get("db.password");
+
+            Class.forName(driver);
+            dbConnection= DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

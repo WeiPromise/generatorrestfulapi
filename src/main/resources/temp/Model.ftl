@@ -1,5 +1,7 @@
 package ${package}.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,8 +26,8 @@ public class ${model} implements Serializable{
     private ${f.type} ${f.field};
 </#list>
 
-<#list fields as f>
+<#--<#list fields as f>-->
 
-    public static final String ${f.field_?upper_case}   = "${f.field_}";
-</#list>
+<#--    public static final String ${f.field_?upper_case}   = "${f.field_}";-->
+<#--</#list>-->
 }
