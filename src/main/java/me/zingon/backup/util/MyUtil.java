@@ -8,6 +8,10 @@ import java.io.File;
  * Created by page on 2017/6/13.
  */
 public class MyUtil {
+
+
+    private final static String prefix = "Qy";
+
     public static String a_b2aB(String str){
 
         StringBuilder sb=new StringBuilder();
@@ -37,7 +41,7 @@ public class MyUtil {
         for (int i = 0; i < temp.length; i++) {
             sb.append(temp[i].substring(0, 1).toUpperCase() + temp[i].substring(1).toLowerCase());
         }
-        return sb.toString();
+        return prefix+sb.toString();
     }
 
     public static String getPath(){

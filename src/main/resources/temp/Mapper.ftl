@@ -5,9 +5,9 @@
     <resultMap id="${model?uncap_first}" type="${package}.entity.${model}">
     <#list fields as f>
         <#if f.key=='PRI'>
-            <id property="${f.field}" column="${f.field_}"/>
+            <id property="${f.field}" column="${f.field_}" jdbcType="${f.jdbcType}"/>
         <#else>
-            <result property="${f.field}" column="${f.field_}"/>
+            <result property="${f.field}" column="${f.field_}" jdbcType="${f.jdbcType}"/>
         </#if>
     </#list>
     </resultMap>
@@ -36,7 +36,7 @@
         <trim prefix="values (" suffix=")" suffixOverrides=",">
         <#list fields as f>
             <if test="${f.field} != null">
-            ${r'#{'}${f.field}${r'}'} ,
+            ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'} ,
             </if>
         </#list>
         </trim>
@@ -47,7 +47,7 @@
         <trim prefix="where " prefixOverrides="and ">
         <#list fields as f>
             <if test="${f.field} != null">
-                and `${f.field_}` = ${r'#{'}${f.field}${r'}'}
+                and `${f.field_}` = ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'}
             </if>
         </#list>
         </trim>
@@ -66,20 +66,19 @@
         <set>
         <#list fields as f>
             <#if (f_index > 0)>
-                <if test="${f.field} != null">
-                    `${f.field_}` = ${r'#{'}${f.field}${r'}'},
+                <if test="${f.field} != null">`${f.field_}` = ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'},
                 </if>
             </#if>
         </#list>
         </set>
-        where <#list fields as f><#if f.key=='PRI'>`${f.field_}`<#break></#if></#list > = ${r'#{id}'}
+        where <#list fields as f><#if f.key=='PRI'>`${f.field_}` = ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'} <#break></#if></#list >
     </update>
 
     <select id="getById" resultMap="${model?uncap_first}">
         select
         <include refid="columns" />
         from `${table}`
-        where <#list fields as f><#if f.key=='PRI'>`${f.field_}`<#break></#if></#list > = ${r'#{id}'}
+        where <#list fields as f><#if f.key=='PRI'>`${f.field_}` = ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'}<#break></#if></#list >
     </select>
 
     <select id="list" resultMap="${model?uncap_first}">
@@ -89,7 +88,7 @@
         <trim prefix="where " prefixOverrides="and ">
         <#list fields as f>
             <if test="${f.field} != null">
-                and `${f.field_}` = ${r'#{'}${f.field}${r'}'}
+                and `${f.field_}` = ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'}
             </if>
         </#list>
         </trim>

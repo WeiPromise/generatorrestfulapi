@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import cn.hutool.core.io.resource.ClassPathResource;
+import cn.hutool.core.io.resource.Resource;
+import me.zingon.backup.util.Config;
 import me.zingon.model.Field;
 import me.zingon.backup.util.Maps;
 import org.apache.commons.logging.Log;
@@ -34,13 +37,16 @@ public class TableDao {
     }
 
     public List<Field> loadFields(String table){
-        String sql="show full columns from `"+table+"`;";
+        //String sql="show full columns from `"+table+"`;";
+        Resource path = new ClassPathResource("field.sql");
+        String sql = path.readUtf8Str();
+        sql = String.format(sql,Config.get("db.database"),table);
         PreparedStatement ps=null;
         List<Field> fields=new ArrayList<Field>();
         try {
             ps=DBcon.getCon().prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
-            while(rs.next()){
+             while(rs.next()){
                 Field field=new Field();
                 field.setField(rs.getString(1));
                 field.setType(rs.getString(2));
@@ -51,6 +57,7 @@ public class TableDao {
                 field.setExtra(rs.getString(7));
                 field.setPrivileges(rs.getString(8));
                 field.setComment(rs.getString(9));
+                field.setJdbcType(rs.getString(10));
                 fields.add(field);
             }
             rs.close();

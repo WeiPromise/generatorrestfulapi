@@ -9,6 +9,7 @@ public class Field {
     String field;
     String field_;
     String type;
+    String jdbcType;
     String collation;
     String nvll;
     String key;
@@ -49,6 +50,14 @@ public class Field {
         if(type.contains("float")||type.contains("double")||type.contains("decimal"))
             return "BigDecimal";
         return type;
+    }
+
+    public String getJdbcType() {
+        return jdbcType;
+    }
+
+    public void setJdbcType(String jdbcType) {
+        this.jdbcType = jdbcType;
     }
 
     public Field setType(String type) {

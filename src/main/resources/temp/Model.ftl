@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
 * Created by leiwei on ${now?date}.
 */
-case class ${model}(<#list fields as f>${f.field_}:${f.type},</#list>)
 @Data
 public class ${model} implements Serializable{
     <#list fields as f>
