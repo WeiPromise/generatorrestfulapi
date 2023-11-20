@@ -36,7 +36,7 @@
         <trim prefix="values (" suffix=")" suffixOverrides=",">
         <#list fields as f>
             <if test="${f.field} != null">
-            ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'} ,
+            ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'},
             </if>
         </#list>
         </trim>
@@ -66,8 +66,9 @@
         <set>
         <#list fields as f>
             <#if (f_index > 0)>
-                <if test="${f.field} != null">`${f.field_}` = ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'},
-                </if>
+            <if test="${f.field} != null">
+                `${f.field_}` = ${r'#{'}${f.field},jdbcType=${f.jdbcType}${r'}'},
+            </if>
             </#if>
         </#list>
         </set>

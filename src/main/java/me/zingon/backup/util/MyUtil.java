@@ -10,7 +10,7 @@ import java.io.File;
 public class MyUtil {
 
 
-    private final static String prefix = "Qy";
+    private final static String prefix = "Lotus";
 
     public static String a_b2aB(String str){
 
